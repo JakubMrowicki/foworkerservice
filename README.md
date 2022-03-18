@@ -8,6 +8,13 @@ This software is designed to run in the background and to run at startup. It wil
 
 If the file cannot be deleted for any reason, the program will attempt it again 10 seconds later.
 
+For example:
+
+![Example](https://i.imgur.com/mNoy8DI.png)
+
+Lightweight:
+![light](https://i.imgur.com/gd9RjIC.png)
+
 ## Logging
 
 You can output logs easily like so in the console.
