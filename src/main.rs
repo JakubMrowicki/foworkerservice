@@ -3,12 +3,13 @@ use filetime::FileTime;
 use std::io::Error;
 use std::time::Duration;
 use std::thread::sleep;
+use chrono::Local;
 
 fn main() {
     let path_name = "C:\\data";
     let data_dir = fs::read_dir(path_name);
     list_dir_contents();
-    let _ = delete_dir_contents(data_dir);
+    delete_dir_contents(data_dir);
     sleep(Duration::from_secs(10));
     main();
 }
@@ -34,9 +35,9 @@ fn list_dir_contents() {
     let files = fs::read_dir("C:\\data").unwrap();
     let found_files = files.count() > 0;
     if found_files {
-        println!("{} files found.", fs::read_dir("C:\\data").unwrap().count());
+        println!("{} - {} file(s) have been found.", Local::now().format("%d-%m-%Y %H:%M:%S"), fs::read_dir("C:\\data").unwrap().count());
     } else {
-        println!("No files in this directory.");
+        println!("{} - No files in this directory.", Local::now().format("%d-%m-%Y %H:%M:%S"));
     }
 }
 
@@ -48,6 +49,9 @@ fn check_age(path: std::path::PathBuf) -> bool {
     let difference = now - mod_time;
     // println!("{:?} is {} seconds old.", path, difference);
     if difference >= 60 {
+        if difference > 70 {
+            println!("{} - {:?} could not be deleted, will try again in 10 seconds.", Local::now().format("%d-%m-%Y %H:%M:%S"), path);
+        };
         return true
     };
     return false;

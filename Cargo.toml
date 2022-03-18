@@ -1,6 +1,6 @@
 [package]
 name = "foworker_service"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Jakub Mrowicki <jakub.mrowicki@sgs.com>"]
 
@@ -8,3 +8,4 @@ authors = ["Jakub Mrowicki <jakub.mrowicki@sgs.com>"]
 
 [dependencies]
 filetime = "0.2.15"
+chrono = "0.4.19"
